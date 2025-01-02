@@ -3,13 +3,12 @@ import { AiOutlineMail } from "solid-icons/ai";
 import { BsPersonVcardFill } from "solid-icons/bs";
 import { FaSolidUserSecret } from "solid-icons/fa";
 import { RiSystemLockPasswordLine } from "solid-icons/ri";
+import Title from "../components/Title";
 export default () => {
   return (
     <>
       <div class="mx-auto w-[80%] ">
-        <h1 class="text-xl underline w-full text-center mb-6 font-bold">
-          Register Now
-        </h1>
+        <Title>Register Now</Title>
 
         <form class="form-control w-[50%] mx-auto">
           <LabelInput

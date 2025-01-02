@@ -3,9 +3,9 @@ import Navbar from "../components/navbar";
 
 export default ({ children }: ParentProps) => {
   return (
-    <>
+    <div>
       <Navbar />
-      {children}
-    </>
+      <div class="mx-auto w-[80%]">{children}</div>
+    </div>
   );
 };
