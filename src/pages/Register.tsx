@@ -13,6 +13,7 @@ export default () => {
         <form class="form-control w-[50%] mx-auto">
           <LabelInput
             name={"Email"}
+            error={() => ""}
             labelText="Email"
             type="text"
             placeholder="Email"
@@ -20,6 +21,7 @@ export default () => {
           />
           <LabelInput
             name={"Username"}
+            error={() => ""}
             labelText="Username"
             type="text"
             placeholder="Username"
@@ -28,6 +30,7 @@ export default () => {
           <div class="divider"></div>
           <LabelInput
             name={"FirstName"}
+            error={() => ""}
             labelText="First Name"
             type="text"
             placeholder="First Name"
@@ -35,6 +38,7 @@ export default () => {
           />
           <LabelInput
             name={"LastName"}
+            error={() => ""}
             labelText="Lastname Name"
             type="text"
             placeholder="Last Name"
@@ -42,12 +46,14 @@ export default () => {
           />
           <div class="divider"></div>
           <LabelInput
+            error={() => ""}
             labelText="Password"
             type="password"
             placeholder="Password"
             Icon={RiSystemLockPasswordLine}
           />
           <LabelInput
+            error={() => ""}
             labelText="Confirm Password"
             type="password"
             placeholder="Confirm Password"
