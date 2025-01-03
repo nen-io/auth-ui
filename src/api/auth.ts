@@ -1,3 +1,5 @@
+import { LoginError, LogInResp } from "./request.types";
+
 const API_URL = (import.meta.env.VITE_API_URL as string) || "";
 
 interface SignInParams {
@@ -6,15 +8,19 @@ interface SignInParams {
 }
 
 export const SignIn = async ({ email, password }: SignInParams) => {
-  return (
-    await fetch(`${API_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-  ).json();
+  const resp = await fetch(`${API_URL}/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (!resp.ok) {
+    console.error(resp);
+  }
+
+  return await resp.json();
 };
 
 interface RegisterParams {

@@ -1,26 +1,50 @@
 import LabelInput from "../components/labelInput";
 import { RiSystemLockPasswordLine } from "solid-icons/ri";
 import Title from "../components/Title";
-import { createSignal } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import { FaSolidUserSecret } from "solid-icons/fa";
 import { SignIn } from "../api/auth";
-import { redirect, useNavigate } from "@solidjs/router";
+import {
+  LoginError,
+  LoginSuccessResp,
+  VerifyEmail,
+} from "../api/request.types";
+import { useNavigate } from "@solidjs/router";
+import { useStore } from "../store";
 
 export default () => {
   const navigate = useNavigate();
   const [email, setEmail] = createSignal("");
   const [password, setPassword] = createSignal("");
   const [loading, setLoading] = createSignal(false);
-  const [loginResult, setLoginResult] = createSignal(null);
+  const [loginResult, setLoginResult] = createSignal<string | null>(null);
+  const [store] = useStore();
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
     setLoading(true);
-    const data = await SignIn({ email: email(), password: password() });
-    // TODO: check login data to see if its verify email or error
-    console.log(data);
-    setLoading(false);
-    navigate("/");
+    const resp = await SignIn({ email: email(), password: password() });
+    if (resp?.accessToken) {
+      const { username, refreshToken, accessToken, email } =
+        resp as LoginSuccessResp;
+
+      store.setLoginDetails({ username, refreshToken, accessToken, email });
+      setLoading(false);
+      navigate("/");
+    }
+
+    if (resp.message === "VERIFY EMAIL") {
+      resp as VerifyEmail;
+      setLoading(false);
+      navigate("/verify-email");
+    }
+
+    if (resp.error) {
+      const { message } = resp as LoginError;
+
+      setLoading(false);
+      setLoginResult(message);
+    }
   };
 
   return (
@@ -55,6 +79,9 @@ export default () => {
             "Sign In"
           )}
         </button>
+        <Show when={loginResult()}>
+          <p class="text-red-800 text-center mt-3">{loginResult()}</p>
+        </Show>
       </form>
     </>
   );
