@@ -24,6 +24,14 @@ export default () => {
     e.preventDefault();
     setLoading(true);
     const resp = await SignIn({ email: email(), password: password() });
+
+    console.log(resp);
+
+    if (!resp) {
+      setLoginResult("Something went wrong, please try again");
+      setLoading(false);
+    }
+
     if (resp?.accessToken) {
       const { username, refreshToken, accessToken, email } =
         resp as LoginSuccessResp;
@@ -80,8 +88,15 @@ export default () => {
           )}
         </button>
         <Show when={loginResult()}>
-          <p class="text-red-800 text-center mt-3">{loginResult()}</p>
+          <p class="text-error text-center mt-3">{loginResult()}</p>
         </Show>
+
+        <div
+          class="link mt-6 w-full text-center"
+          onClick={() => navigate("/register")}
+        >
+          Not a member? Register now
+        </div>
       </form>
     </>
   );

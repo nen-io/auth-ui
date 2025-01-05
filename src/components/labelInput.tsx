@@ -54,7 +54,7 @@ export default ({
           placeholder={placeholder}
         />
       </label>
-      <span class="text-red-800 text-xs">{error && error()}</span>
+      <span class="text-error text-xs mt-1">{error && error()}</span>
     </>
   );
 };
