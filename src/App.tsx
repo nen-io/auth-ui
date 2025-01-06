@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import rootLayout from "./layout/rootLayout";
 import Home from "./pages/Home";
 import VerifyEmail from "./pages/VerifyEmail";
+import CheckEmail from "./pages/CheckEmail";
 
 export default () => {
   return (
@@ -11,7 +12,8 @@ export default () => {
       <Route path={"/"} component={Home} />
       <Route path={"/sign-in"} component={SignIn} />
       <Route path={"/register"} component={Register} />
-      <Route path={"/verify-email"} component={VerifyEmail} />
+      <Route path={"/verify-email"} component={CheckEmail} />
+      <Route path={"/verify-email/:token/:id"} component={VerifyEmail} />
     </Router>
   );
 };

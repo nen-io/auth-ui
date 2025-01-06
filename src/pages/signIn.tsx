@@ -4,11 +4,7 @@ import Title from "../components/Title";
 import { createSignal, Show } from "solid-js";
 import { FaSolidUserSecret } from "solid-icons/fa";
 import { SignIn } from "../api/auth";
-import {
-  LoginError,
-  LoginSuccessResp,
-  VerifyEmail,
-} from "../api/request.types";
+import { ApiError, LoginSuccessResp, VerifyEmail } from "../api/request.types";
 import { useNavigate } from "@solidjs/router";
 import { useStore } from "../store";
 
@@ -42,13 +38,13 @@ export default () => {
     }
 
     if (resp.message === "VERIFY EMAIL") {
-      resp as VerifyEmail;
+      const { email } = resp as VerifyEmail;
       setLoading(false);
-      navigate("/verify-email");
+      navigate(`/verify-email?e=${email}`);
     }
 
     if (resp.error) {
-      const { message } = resp as LoginError;
+      const { message } = resp as ApiError;
 
       setLoading(false);
       setLoginResult(message);

@@ -6,7 +6,7 @@ export type LoginSuccessResp = {
   username: string;
 };
 
-export type LoginError = {
+export type ApiError = {
   error: boolean;
   message: string;
 };
@@ -14,6 +14,13 @@ export type LoginError = {
 export type VerifyEmail = {
   status: string;
   message: "VERIFY EMAIL";
+  email: string;
 };
 
-export type LogInResp = LoginSuccessResp | LoginError | VerifyEmail;
+export type RegisterSuccess = {
+  id: string;
+  message: "User created";
+  status: "VERIFY_EMAIL";
+};
+
+export type LogInResp = LoginSuccessResp | ApiError | VerifyEmail;

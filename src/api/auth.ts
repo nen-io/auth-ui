@@ -41,13 +41,41 @@ export const Register = async ({
   lastName,
   userName,
 }: RegisterParams) => {
-  return (
-    await fetch(`${API_URL}/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password, firstName, lastName, userName }),
-    })
-  ).json();
+  const resp = await fetch(`${API_URL}/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password, firstName, lastName, userName }),
+  });
+
+  return await resp.json();
+};
+
+interface RequestVerify {
+  email: string;
+}
+
+export const RequestVerify = async ({ email }: RequestVerify) => {
+  const resp = await fetch(`${API_URL}/request-email-verification`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+
+  const json = await resp.json();
+  return json;
+};
+
+export const VerifyEmail = async (id: string, token: string) => {
+  const resp = await fetch(`${API_URL}/verify/${token}/${id}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return await resp.json();
 };
