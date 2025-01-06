@@ -1,7 +1,7 @@
 import LabelInput from "../components/labelInput";
 import { RiSystemLockPasswordLine } from "solid-icons/ri";
 import Title from "../components/Title";
-import { createSignal, Show } from "solid-js";
+import { createMemo, createSignal, Show } from "solid-js";
 import { FaSolidUserSecret } from "solid-icons/fa";
 import { SignIn } from "../api/auth";
 import { ApiError, LoginSuccessResp, VerifyEmail } from "../api/request.types";
@@ -51,6 +51,8 @@ export default () => {
     }
   };
 
+  const error = createMemo(() => !email() || !password());
+
   return (
     <>
       <Title>Sign In</Title>
@@ -76,7 +78,7 @@ export default () => {
           Icon={RiSystemLockPasswordLine}
         />
 
-        <button class="btn mt-2" disabled={loading()}>
+        <button class="btn mt-2" disabled={loading() || error()}>
           {loading() ? (
             <span class="loading loading-spinner loading-sm"></span>
           ) : (

@@ -2,7 +2,7 @@ import { ParentProps } from "solid-js";
 
 export default ({ children }: ParentProps) => {
   return (
-    <h1 class="text-2xl underline w-full text-center mb-3 font-bolde">
+    <h1 class="text-2xl underline w-full text-center mb-3 font-bold">
       {children}
     </h1>
   );

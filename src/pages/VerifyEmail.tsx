@@ -21,6 +21,7 @@ export default () => {
     }
 
     if (resp.success) {
+      alert("success");
       navigate("/sign-in", { replace: true });
     }
   });

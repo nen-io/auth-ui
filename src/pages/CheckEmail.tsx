@@ -1,6 +1,6 @@
 import { useSearchParams } from "@solidjs/router";
 import Title from "../components/Title";
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal } from "solid-js";
 import { RequestVerify } from "../api/auth";
 
 export default () => {
@@ -12,10 +12,6 @@ export default () => {
 
   const e = searchParams.e as string;
 
-  createEffect(() => {
-    console.log(e, "e");
-  });
-
   const handleRetry = async () => {
     setLoading(true);
     setRequestVerify("");
@@ -24,10 +20,12 @@ export default () => {
     const resp = await RequestVerify({ email: e });
 
     if (resp?.success) {
+      setError(false);
       setRequestVerify(resp.message as string);
     }
 
     if (resp?.error) {
+      console.log("here");
       setError(true);
       setRequestVerify(resp.message as string);
     }
@@ -35,16 +33,24 @@ export default () => {
     setLoading(false);
   };
 
+  const errorClass = createMemo(() =>
+    error()
+      ? "text-error text-sm text-gray-500 mt-1 "
+      : "text-success text-sm text-gray-500 mt-1 ",
+  );
+
+  createEffect(() => console.log(errorClass()));
+
   return (
     <>
       <Title>Check Email</Title>
 
-      <p>
+      <p class="text-center">
         Check your email for a verification link. After you have successfully
         verified your account you will be able to sign in.
       </p>
 
-      <p>
+      <p class="text-center">
         If you haven't recieved the verification after a few minutes, please
         request another link by clicking below.
       </p>
@@ -61,15 +67,7 @@ export default () => {
             "Request another link"
           )}
         </button>
-        <span
-          class={
-            "text-sm text-gray-500 mt-1 " + error()
-              ? "text-error"
-              : "text-success"
-          }
-        >
-          {requestVerify()}
-        </span>
+        <span class={errorClass()}>{requestVerify()}</span>
       </div>
     </>
   );
