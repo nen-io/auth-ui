@@ -1,8 +1,6 @@
 export type LoginSuccessResp = {
-  accessToken: string;
   email: string;
   message: "User logged in";
-  refreshToken: string;
   username: string;
 };
 

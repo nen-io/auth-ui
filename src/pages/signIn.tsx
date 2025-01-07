@@ -28,11 +28,10 @@ export default () => {
       setLoading(false);
     }
 
-    if (resp?.accessToken) {
-      const { username, refreshToken, accessToken, email } =
-        resp as LoginSuccessResp;
+    if (resp?.success) {
+      const { username, email } = resp as LoginSuccessResp;
 
-      store.setLoginDetails({ username, refreshToken, accessToken, email });
+      store.setLoginDetails({ username, email });
       setLoading(false);
       navigate("/");
     }
@@ -94,6 +93,13 @@ export default () => {
           onClick={() => navigate("/register")}
         >
           Not a member? Register now
+        </div>
+
+        <div
+          class="link mt-3 w-full text-center"
+          onClick={() => navigate("/forgot-password")}
+        >
+          Forgot Password?
         </div>
       </form>
     </>

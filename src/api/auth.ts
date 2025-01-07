@@ -5,6 +5,18 @@ interface SignInParams {
   password: string;
 }
 
+export const Logout = async () => {
+  const resp = await fetch(`${API_URL}/logout`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  });
+
+  return await resp.json();
+};
+
 export const SignIn = async ({ email, password }: SignInParams) => {
   try {
     const resp = await fetch(`${API_URL}/login`, {
@@ -12,6 +24,7 @@ export const SignIn = async ({ email, password }: SignInParams) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({ email, password }),
     });
 
@@ -75,6 +88,18 @@ export const VerifyEmail = async (id: string, token: string) => {
     headers: {
       "Content-Type": "application/json",
     },
+  });
+
+  return await resp.json();
+};
+
+export const Me = async () => {
+  const resp = await fetch(`${API_URL}/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
   });
 
   return await resp.json();
