@@ -1,23 +1,16 @@
 import daisyui from "daisyui";
+import tailwindcssMotion from "tailwindcss-motion";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     fontFamily: {
-      sans: [
-        "ui-monospace",
-        "SFMono-Regular",
-        "Menlo",
-        "Monaco",
-        "Consolas",
-        "Liberation Mono",
-        "Courier New",
-        "monospace",
-      ],
+      sans: ["Raleway"],
     },
     extend: {},
   },
-  plugins: [daisyui],
+  plugins: [daisyui, tailwindcssMotion],
   daisyui: {
     themes: ["business"],
   },

@@ -2,6 +2,7 @@ import { useNavigate, useParams } from "@solidjs/router";
 import Title from "../components/Title";
 import { createEffect, createSignal, Show } from "solid-js";
 import { VerifyEmail } from "../api/auth";
+import toast from "solid-toast";
 
 export default () => {
   const params = useParams();
@@ -21,7 +22,10 @@ export default () => {
     }
 
     if (resp.success) {
-      alert("success");
+      toast.success("Email verified, you can now sign in", {
+        duration: 5000,
+        position: "top-right",
+      });
       navigate("/sign-in", { replace: true });
     }
   });

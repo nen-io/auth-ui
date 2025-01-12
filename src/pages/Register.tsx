@@ -77,7 +77,7 @@ export default () => {
       <div class="mx-auto w-[80%] ">
         <Title>Register Now</Title>
 
-        <form class="form-control w-[50%] mx-auto">
+        <form class="form-control w-[50%] mx-auto motion-preset-slide-up motion-duration-500 motion-ease">
           <LabelInput
             name={"Email"}
             error={emailError}

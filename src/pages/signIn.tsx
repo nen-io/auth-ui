@@ -7,6 +7,7 @@ import { SignIn } from "../api/auth";
 import { ApiError, LoginSuccessResp, VerifyEmail } from "../api/request.types";
 import { useNavigate } from "@solidjs/router";
 import { useStore } from "../store";
+import toast from "solid-toast";
 
 export default () => {
   const navigate = useNavigate();
@@ -33,7 +34,8 @@ export default () => {
 
       store.setLoginDetails({ username, email });
       setLoading(false);
-      navigate("/");
+      toast.success("Signed In successfully", { duration: 2000 });
+      navigate("/home");
     }
 
     if (resp.message === "VERIFY EMAIL") {
@@ -56,7 +58,10 @@ export default () => {
     <>
       <Title>Sign In</Title>
 
-      <form class="form-control w-[50%] mx-auto" onSubmit={handleSubmit}>
+      <form
+        class="form-control w-[50%] mx-auto motion-preset-slide-up motion-duration-500 motion-ease"
+        onSubmit={handleSubmit}
+      >
         <LabelInput
           name={"Email"}
           labelText="Email / Username"

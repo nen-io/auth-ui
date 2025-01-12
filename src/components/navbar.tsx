@@ -9,12 +9,25 @@ export default () => {
 
   return (
     <>
-      <div class="navbar bg-base-100 mb-5">
+      <div class="navbar motion-preset-slide-down motion-ease motion-duration-500 sticky z-10 top-0 bg-base-200 mb-5">
         <div class="flex-1">
-          <a class="btn btn-ghost text-xl" onClick={() => navigate("/")}>
-            WebApp
+          <a
+            class="btn btn-ghost text-xl "
+            onClick={() => {
+              if (store.loggedIn) {
+                navigate("/home");
+              } else navigate("/");
+            }}
+          >
+            🦍 WebApp 🦍
           </a>
         </div>
+        <Show when={!store.loggedIn}>
+          <a class="btn btn-primary" onClick={() => navigate("/sign-in")}>
+            {" "}
+            Sign In{" "}
+          </a>
+        </Show>
         <Show when={store.loggedIn}>
           <div class="flex-none gap-2">
             <div class="dropdown dropdown-end">

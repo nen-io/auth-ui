@@ -7,12 +7,18 @@ import CheckEmail from "./pages/CheckEmail";
 import AuthRoute from "./layout/AuthRoute";
 import Settings from "./pages/Settings";
 import { Route, Router } from "@solidjs/router";
+import ForgotPassword from "./pages/ForgotPassword";
+import LandingPage from "./pages/Landing";
+import { ForgotPasswordChange } from "./pages/ForgotPasswordChange";
+import PageNotFound from "./pages/PageNotFound";
+import CheckEmailResetPassword from "./pages/CheckEmailResetPassword";
 
 export default () => {
   return (
     <Router root={rootLayout}>
+      <Route path={"/"} component={LandingPage} />
       <Route
-        path={"/"}
+        path={"/home"}
         component={() => (
           <AuthRoute>
             <Home />
@@ -31,6 +37,17 @@ export default () => {
       <Route path={"/register"} component={Register} />
       <Route path={"/verify-email"} component={CheckEmail} />
       <Route path={"/verify-email/:token/:id"} component={VerifyEmail} />
+      <Route
+        path={"/reset-password/:token/:id"}
+        component={ForgotPasswordChange}
+      />
+      <Route path={"/forgot-password"} component={ForgotPassword} />
+      <Route
+        path={"/forgot-password/check-email"}
+        component={CheckEmailResetPassword}
+      />
+      <Route path={"/404"} component={PageNotFound} />
+      <Route path={"*"} component={PageNotFound} />
     </Router>
   );
 };
