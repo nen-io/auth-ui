@@ -125,6 +125,7 @@ export const ForgotPasswordChange = async (
   const resp = await fetch(`${API_URL}/forgot-password`, {
     body: JSON.stringify({
       token,
+      id,
       newPassword: password,
     }),
   });
