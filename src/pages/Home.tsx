@@ -15,11 +15,11 @@ export default () => {
         <p>Email: {store.email}</p>
         <p>Username: {store.username}</p>
       </div>
-      {quotes()?.quotes.map((q) => (
+      {quotes() && (
         <p class="text-lg my-6 motion-preset-slide-down motion-ease motion-duration-500">
-          "{q.text}" - {q.author}
+          "{quotes()?.text}" - {quotes()?.author}
         </p>
-      ))}
+      )}
     </div>
   );
 };

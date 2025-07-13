@@ -1,4 +1,5 @@
 import { Component } from "solid-js";
+import { createEffect } from "solid-js";
 
 interface Props {
   labelText: string;
@@ -23,18 +24,24 @@ export default ({
   onFocusOut,
   Icon,
 }: Props) => {
+
+  createEffect(( ) => {
+    console.log(Boolean(error()))
+
+    console.log("fieldset-legend " + Boolean(error()) ? " text-error" : "");
+  })
+
   return (
-    <>
-      <label class="label">
-        <span class={error() ? "label-text text-error" : "label-text"}>
+    <fieldset class="fieldset ">
+      <legend class="">
           {labelText}
-        </span>
-      </label>
+      </legend>
       <label
         class={
           error()
-            ? " input input-bordered flex items-center gap-2 input-error"
-            : "input input-bordered flex items-center gap-2 "
+            ? " input input-bordered flex items-center gap-[12px] input-error"
+            : "input input-bordered flex items-center gap-[12px] "
+            + "w-full pr-0"
         }
       >
         {Icon && (
@@ -50,11 +57,11 @@ export default ({
           onInput={onInput}
           onFocusOut={onFocusOut}
           type={type}
-          class={error() ? "text-error grow" : "grow"}
+          class={error() ? "text-error grow" : "grow" + " w-full pl-2"}
           placeholder={placeholder}
         />
       </label>
       <span class="text-error text-xs mt-1">{error && error()}</span>
-    </>
+    </fieldset>
   );
 };

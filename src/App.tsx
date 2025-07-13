@@ -12,6 +12,7 @@ import LandingPage from "./pages/Landing";
 import { ForgotPasswordChange } from "./pages/ForgotPasswordChange";
 import PageNotFound from "./pages/PageNotFound";
 import CheckEmailResetPassword from "./pages/CheckEmailResetPassword";
+import Profile from "./pages/Profile";
 
 export default () => {
   return (
@@ -30,6 +31,14 @@ export default () => {
         component={() => (
           <AuthRoute>
             <Settings />
+          </AuthRoute>
+        )}
+      />
+      <Route
+        path={"/profile"}
+        component={() => (
+          <AuthRoute>
+            <Profile />
           </AuthRoute>
         )}
       />

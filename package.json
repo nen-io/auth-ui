@@ -9,19 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@solidjs/router": "^0.15.2",
+    "@solidjs/router": "^0.15.3",
+    "@tailwindcss/vite": "^4.1.11",
     "solid-icons": "^1.1.0",
-    "solid-js": "^1.9.3",
+    "solid-js": "^1.9.7",
     "solid-toast": "^0.5.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "daisyui": "^4.12.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.16",
-    "tailwindcss-motion": "^1.0.1",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.1",
-    "vite-plugin-solid": "^2.11.0"
+    "daisyui": "^5.0.46",
+    "tailwindcss": "^4.1.11",
+    "tailwindcss-motion": "^1.1.1",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.4",
+    "vite-plugin-solid": "^2.11.7"
   }
 }

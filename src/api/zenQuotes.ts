@@ -9,9 +9,7 @@ type Quote = {
   author_id: "string";
 };
 
-type QuoteResp = {
-  quotes: Quote[];
-};
+type QuoteResp = Quote;
 
 export const getZenQuote = async () => {
   const resp = await fetch(`${ZEN_QUOTES_API}`, {
