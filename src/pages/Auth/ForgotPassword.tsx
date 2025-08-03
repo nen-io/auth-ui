@@ -1,10 +1,10 @@
 import { createSignal } from "solid-js";
-import LabelInput from "../components/labelInput";
-import Title from "../components/Title";
-import { ForgotPasswordRequest } from "../api/auth";
+import LabelInput from "../../components/labelInput";
+import Title from "../../components/Title";
+import { ForgotPasswordRequest } from "../../api/auth";
 import toast from "solid-toast";
 import { useNavigate } from "@solidjs/router";
-import emailValidation from "../utils/emailValidation";
+import emailValidation from "../../utils/emailValidation";
 
 export default () => {
   const navigate = useNavigate();

@@ -1,13 +1,17 @@
-import LabelInput from "../components/labelInput";
+import LabelInput from "../../components/labelInput";
 import { RiSystemLockPasswordLine } from "solid-icons/ri";
-import Title from "../components/Title";
 import { createMemo, createSignal, Show } from "solid-js";
 import { FaSolidUserSecret } from "solid-icons/fa";
-import { SignIn } from "../api/auth";
-import { ApiError, LoginSuccessResp, VerifyEmail } from "../api/request.types";
+import { SignIn } from "../../api/auth";
+import {
+  ApiError,
+  LoginSuccessResp,
+  VerifyEmail,
+} from "../../api/request.types";
 import { useNavigate } from "@solidjs/router";
-import { useStore } from "../store";
+import { useStore } from "../../store";
 import toast from "solid-toast";
+import Title from "../../components/Title";
 
 export default () => {
   const navigate = useNavigate();
@@ -89,6 +93,9 @@ export default () => {
             "Sign In"
           )}
         </button>
+        <div class="mt-2">
+        <a class="btn" href="http://localhost:6969/auth/google/login">Sign In with Google</a>
+        </div>
         <Show when={loginResult()}>
           <p class="text-error text-center mt-3">{loginResult()}</p>
         </Show>
@@ -106,7 +113,10 @@ export default () => {
         >
           Forgot Password?
         </div>
+
       </form>
+
+
     </>
   );
 };

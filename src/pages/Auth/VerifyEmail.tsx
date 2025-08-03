@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "@solidjs/router";
-import Title from "../components/Title";
 import { createEffect, createSignal, Show } from "solid-js";
-import { VerifyEmail } from "../api/auth";
+import { VerifyEmail } from "../../api/auth";
 import toast from "solid-toast";
+import Title from "../../components/Title";
 
 export default () => {
   const params = useParams();

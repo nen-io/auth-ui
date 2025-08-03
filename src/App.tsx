@@ -1,18 +1,18 @@
-import SignIn from "./pages/SignIn";
-import Register from "./pages/Register";
+import SignIn from "./pages/Auth/SignIn";
+import Register from "./pages/Auth/Register";
 import rootLayout from "./layout/rootLayout";
 import Home from "./pages/Home";
-import VerifyEmail from "./pages/VerifyEmail";
-import CheckEmail from "./pages/CheckEmail";
+import VerifyEmail from "./pages/Auth/VerifyEmail";
 import AuthRoute from "./layout/AuthRoute";
 import Settings from "./pages/Settings";
 import { Route, Router } from "@solidjs/router";
-import ForgotPassword from "./pages/ForgotPassword";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 import LandingPage from "./pages/Landing";
-import { ForgotPasswordChange } from "./pages/ForgotPasswordChange";
+import { ForgotPasswordChange } from "./pages/Auth/ForgotPasswordChange";
 import PageNotFound from "./pages/PageNotFound";
-import CheckEmailResetPassword from "./pages/CheckEmailResetPassword";
+import CheckEmailResetPassword from "./pages/Auth/CheckEmailResetPassword";
 import Profile from "./pages/Profile";
+import CheckEmail from "./pages/Auth/CheckEmail";
 
 export default () => {
   return (

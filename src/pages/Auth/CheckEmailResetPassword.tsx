@@ -1,7 +1,7 @@
 import { useSearchParams } from "@solidjs/router";
-import Title from "../components/Title";
+import Title from "../../components/Title";
 import { createEffect, createMemo, createSignal } from "solid-js";
-import { RequestVerify } from "../api/auth";
+import { RequestVerify } from "../../api/auth";
 
 export default () => {
   const [searchParams] = useSearchParams();

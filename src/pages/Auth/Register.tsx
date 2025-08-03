@@ -1,17 +1,17 @@
-import LabelInput from "../components/labelInput";
+import LabelInput from "../../components/labelInput";
 import { AiOutlineMail } from "solid-icons/ai";
 import { BsPersonVcardFill } from "solid-icons/bs";
 import { FaSolidUserSecret } from "solid-icons/fa";
 import { RiSystemLockPasswordLine } from "solid-icons/ri";
-import Title from "../components/Title";
 import { createMemo, createSignal, Show } from "solid-js";
-import emailValidation from "../utils/emailValidation";
+import emailValidation from "../../utils/emailValidation";
 import { useNavigate } from "@solidjs/router";
-import { Register } from "../api/auth";
-import usernameValidation from "../utils/usernameValidation";
-import passwordValidation from "../utils/passwordValidation";
-import confirmPasswordValidation from "../utils/confirmPasswordValidation";
-import { ApiError } from "../api/request.types";
+import { Register } from "../../api/auth";
+import usernameValidation from "../../utils/usernameValidation";
+import passwordValidation from "../../utils/passwordValidation";
+import confirmPasswordValidation from "../../utils/confirmPasswordValidation";
+import { ApiError } from "../../api/request.types";
+import Title from "../../components/Title";
 export default () => {
   const navigate = useNavigate();
 

@@ -1,6 +1,6 @@
 import { useParams } from "@solidjs/router";
-import LabelInput from "../components/labelInput";
-import Title from "../components/Title";
+import LabelInput from "../../components/labelInput";
+import Title from "../../components/Title";
 import { createEffect, createSignal } from "solid-js";
 
 export function ForgotPasswordChange() {

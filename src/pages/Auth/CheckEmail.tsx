@@ -1,6 +1,5 @@
 import { useNavigate } from "@solidjs/router";
-import Title from "../components/Title";
-
+import Title from "../../components/Title";
 export default () => {
   const navigate = useNavigate();
 
