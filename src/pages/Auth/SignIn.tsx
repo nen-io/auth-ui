@@ -3,6 +3,7 @@ import { RiSystemLockPasswordLine } from "solid-icons/ri";
 import { createMemo, createSignal, Show } from "solid-js";
 import { FaSolidUserSecret } from "solid-icons/fa";
 import { SignIn } from "../../api/auth";
+import { AiFillGoogleCircle } from 'solid-icons/ai'
 import {
   ApiError,
   LoginSuccessResp,
@@ -93,8 +94,9 @@ export default () => {
             "Sign In"
           )}
         </button>
-        <div class="mt-2">
-        <a class="btn" href="http://localhost:6969/auth/google/login">Sign In with Google</a>
+        <div class="divider">Sign In with </div>
+        <div class="my-5 flex flex-col items-center">
+        <a class="btn" href="http://localhost:6969/auth/google/login">Google {<AiFillGoogleCircle/>}</a>
         </div>
         <Show when={loginResult()}>
           <p class="text-error text-center mt-3">{loginResult()}</p>
